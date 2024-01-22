@@ -10,6 +10,13 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    height: 125px;
+    width: 95px;
+    text-align: right;
+    display: flex;
+    /* justify-content: flex-end; */
+    /* flex-direction: row; */
+    /* align-items: center; */
   }
 }
 
@@ -22,12 +29,12 @@
   justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
-  background-image: linear-gradient(to top, #0096fa 0%, #ffb199 100%);
+  /* background-image: linear-gradient(to top, #0096fa 0%, #ffb199 100%); */
   background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+  /* -webkit-background-clip: text; */
+  /* -moz-background-clip: text; */
+  /* -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent; */
   display: flex;
   cursor: pointer;
   text-decoration: none;

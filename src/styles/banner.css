@@ -9,15 +9,12 @@
 }
 
 .navbar {
-    background: #131313;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+    /* text-justify: auto; */
+    /* height: 80px; */
+    /* justify-content: center;
+    align-items: center; */
+    /* top: 0; */
+    /* z-index: 999; */
 }
 
 .navbar_container {
@@ -31,7 +28,7 @@
     padding: 0 50px;
 }
 
-.navbar_logo {
+/* .navbar_logo {
     background-color: #8ecdff;
     background-image: linear-gradient(to top, #0096fa 0%, #ffb199 100%);
     background-size: 100%;
@@ -44,7 +41,7 @@
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
-}
+} */
 
 .fa-gem {
     margin-right: 0.5rem;
@@ -55,10 +52,6 @@
     align-items: center;
     list-style: none;
     text-align: center;
-}
-
-.navbar_item {
-    height: 80px;
 }
 
 .navbar_links {
@@ -91,9 +84,7 @@
     border: none;
     outline: none;
     border-radius: 4px;
-    background: #2c97ee;
-    background-image: -webkit-linear-gradient(to right, #0096fa, #ffb199, #f77062);
-    /* background-image: linear-gradient(to right, #3290cf, #d8491e, #715af0 ); */
+    background: #722dcc;
     color: #fff;
     transition: all 0.3s ease;
 }
