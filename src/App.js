@@ -1,11 +1,12 @@
 import React from 'react'
-import logo from '../src/images/logo.png';
 import Banner from './components/Banner';
+import About from './components/About';
 
 function App() {
   return (
     <div>
       <Banner />
+      <About />
     </div>
   );
 }
