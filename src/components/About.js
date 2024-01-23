@@ -1,10 +1,11 @@
 import React from 'react'
 import '../styles/about.css'
+import companyPic from '../images/company.jpg'
 
 function About() {
   return (
     <div>
-      <div className='main'>
+      <div>
         <div className='main_container'>
           <h1>NEXT GENERATION</h1>
           <h2>TECHNOLOGY</h2>
@@ -12,6 +13,7 @@ function About() {
           <button className='main_btn'>Get Started</button>
           <h1>What do we do?</h1>
           <h2>We offer quality IT Support & Device Repairs</h2>
+          <img src={companyPic} alt='MAPP SUPREME' className='company_pic' />
           <p>
             Our team of experienced IT professionals is committed to providing 
             the highest level of service and support and is dedicated to helping 
@@ -29,7 +31,6 @@ function About() {
         </div>
       </div> 
     </div>
-    
   )
 }
 

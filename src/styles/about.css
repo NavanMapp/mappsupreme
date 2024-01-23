@@ -6,7 +6,7 @@
 .main_container {
     background-color: #0D1117;
     color: #fff;
-    display: grid;
+    display: block;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-self: center;
@@ -14,7 +14,7 @@
     height: 90vh;
     z-index: 1;
     width: auto;
-    padding: 0 50px;
+    padding: 25px;
     padding-bottom: auto;
     overflow: visible;
 }
@@ -23,9 +23,8 @@
 .mainh3,
 .main p {
     margin-bottom: 1rem; /* Add or adjust margin as needed */
+    text-align: center;
 }
-
-
 
 .main h2 {
     font-size: 3rem; /* Adjusted font size */
@@ -53,7 +52,6 @@
 
 .main_btn {
     font-size: 1rem;
-    display: block;
     background-image: linear-gradient(to top, #0096fa 0%, #ffb199 100%);
     padding: 10px;
     height: auto;
@@ -65,4 +63,11 @@
     position: relative;
     transition: all 0.35s;
     outline: none;
+}
+
+.company_pic {
+    max-width: 20%;
+    height: auto;
+    margin-bottom: 20px;
+    align-items: center;
 }
