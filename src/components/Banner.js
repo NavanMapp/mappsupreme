@@ -1,30 +1,35 @@
 import '../styles/banner.css'
+import logo from '../images/logo.png'
 
 export default function Banner() {
     return (
-    <div className="navbar">
-        <div className="navbar_container">
-            <a href="/Mapp_Supreme_Site/html/index.html" id="navbar_logo">MAPP SUPREME</a>
+        <div className="navbar">
+            <div className="logo_container">
+                <a href='#home'>
+                    <img src={logo} alt="MAPP SUPREME" className="App-logo" />
+                </a>
+            </div>
             <div className="navbar_toggle" id="mobile-menu">
-                <span className="bar"></span><span class="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
                 <span className="bar"></span>
             </div>
             <ul className="navbar_menu">
-                <li className="navbar_item">
-                    <a href="#home" className="navbar_links" id="home-page">Home</a>
-                </li>
-                <li className="navbar_item">
-                    <a href="#about" className="navbar_links" id="about-page">About</a>
-                </li>
-                <li className="navbar_item">
-                    <a href="#services" className="navbar_links" id="services-page">Services</a>
-                </li>
+                <a href="#home" className="navbar_links">
+                    Home
+                </a>
+                <a href="#about" className="navbar_links">
+                    About
+                </a>
 
-                <li className="navbar_btn">
-                    <a href="./login.html" className="button" id="contactus">Sign In</a>
-                </li>
+                <a href="#services" className="navbar_links">
+                    Services
+                </a>
+                <a href="./login.html" className="button">
+                    Sign In
+                </a>
             </ul>
         </div>
-    </div>
     )
 }
