@@ -6,7 +6,7 @@
 .main_container {
     background-color: #0D1117;
     color: #fff;
-    display: block;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-self: center;
@@ -66,8 +66,12 @@
 }
 
 .company_pic {
-    max-width: 20%;
+    max-width: 80%;
     height: auto;
     margin-bottom: 20px;
     align-items: center;
 }
+
+
+
+/* ******************************************************   MOBILE RESPONSE *************************************************************************** */

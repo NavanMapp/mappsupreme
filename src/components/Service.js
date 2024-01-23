@@ -1,8 +1,9 @@
 import React from 'react'
+import '../styles/service.css'
 
 function Service() {
   return (
-    <div className='sevices'>
+      <div className='services'>
         <h1>See what services we offer</h1>
         <div>
             <div className='service_card'>
