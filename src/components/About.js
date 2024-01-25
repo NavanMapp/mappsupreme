@@ -9,7 +9,7 @@ function About() {
         <div className='main_container'>
           <h1>NEXT GENERATION</h1>
           <h2>TECHNOLOGY</h2>
-          <p>See what makes us different</p>
+          <h2>See what makes us different</h2>
           <div>
             <button className='main_btn'>Get Started</button>
           </div>
