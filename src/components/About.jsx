@@ -1,18 +1,18 @@
-import React from 'react'
-import '../styles/about.css'
-import companyPic from '../images/company.jpg'
+import React from 'react';
+import '../styles/about.css';
+import companyPic from '../images/company.jpg';
 
 function About() {
   return (
-    <div>
-      <div>
-        <div className='main_container'>
+    <div className='about_container'>
+      <div className='main_container'>
+        <div className='header'>
           <h1>NEXT GENERATION</h1>
           <h2>TECHNOLOGY</h2>
           <h2>See what makes us different</h2>
-          <div>
-            <button className='main_btn'>Get Started</button>
-          </div>
+          <button className='main_btn'>Get Started</button>
+        </div>
+        <div className='main_content'>
           <h1>What do we do?</h1>
           <h2>We offer quality IT Support & Device Repairs</h2>
           <img src={companyPic} alt='MAPP SUPREME' className='company_pic' />
@@ -29,13 +29,11 @@ function About() {
             We understand that effective IT solutions are essential to business success 
             and we strive to provide our clients with the best possible service.
           </p>
-          <div>
-            <button className='main_btn'>Schedule Call</button>
-          </div>
+          <button className='main_btn'>Schedule Call</button>
         </div>
-      </div> 
+      </div>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

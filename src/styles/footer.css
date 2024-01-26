@@ -1,7 +1,7 @@
 /* footer CSS */
 .footer_container {
     background-color: #282c34;
-    padding: 1rem 0;
+    padding: 0.2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,11 +10,11 @@
 
 #footer_logo {
     color: #fff;
-    display: flex;
-    align-items: center;
+    display: grid;
+    align-items: left;
     cursor: pointer;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .footer_links {
@@ -22,11 +22,6 @@
     max-width: 1000px;
     display: flex;
     justify-content: center;
-}
-
-.footer_linkWrap {
-    color: #fff;
-    display: flex;
 }
 
 .footer_linkItems {
@@ -82,3 +77,4 @@
 .website_rights {
     color: #fff;
 }
+
