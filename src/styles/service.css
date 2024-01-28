@@ -1,44 +1,40 @@
-
+/* Services Section CSS */
 .services {
     background: #0D1117;
-    color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    padding: 10rem 0;
+    padding: 10vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    text-align: center;
+    padding: 50px 0;
 }
 
-
-
-.services_container {
-    display: grid;
-    justify-content: center;
-    flex-wrap: wrap;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-}
-
-/* /* .services h1 {
-    background-color: #a4d1ee;
-    background-image: linear-gradient(to right, #caced1, #8e8fee, #f55746, rgba(107, 107, 209, 0.933), #ffb199);
+.services h1 {
+    background-color: #8e8fee;
     background-size: 100%;
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 2.5rem;
     -webkit-background-clip: text;
-    -moz-background-clip: text;
+    /* -moz-background-clip: text; */
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-} */
+}
 
-/* .services h2 {
-    position: absolute;
-    top: 340px;
-    left: 30px;
-} */
+.services_container {
+    color: #caced1;
+    display: grid;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
 
-/* .services_card {
+.services_card {
     margin: 10px;
     height: 425px;
     width: 300px;
@@ -46,62 +42,63 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%),
-        url('/Mapp_Supreme_Site/images/pic2.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%);
     background-size: cover;
     position: relative;
+    overflow: hidden;
+    max-width: 300px;
     color: #fff;
-} */
+}
 
-
-
-/* .services_card:nth-child(2) {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%),
-        url('/Mapp_Supreme_Site/images/pic3.jpg');
+.services_card:nth-child(1) {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%);
     background-size: cover;
     position: relative;
     color: #fff;
 }
 
 .services_card:nth-child(2) {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%),
-        url('/Mapp_Supreme_Site/images/pic4.png');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%);
     background-size: cover;
     position: relative;
     color: #fff;
 }
 
 .services_card:nth-child(3) {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%),
-        url('/Mapp_Supreme_Site/images/pic7.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%);
     background-size: cover;
     position: relative;
     color: #fff;
 }
 
 .services_card:nth-child(4) {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%),
-        url('/Mapp_Supreme_Site/images/pic8.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(17, 17, 17, 0.6) 100%);
     background-size: cover;
     position: relative;
     color: #fff;
-} */
+}
 
+.services h2 {
+    /* position: absolute; */
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+}
 
-
-/* .services_card p {
+.services_card p {
     position: absolute;
-    top: 390px;
-    left: 30px;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
 }
 
 .services_btn {
     display: flex;
     justify-content: center;
     margin-top: 16px;
-} */
+}
 
-/* .services_card button {
+.services_card button {
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -118,9 +115,18 @@
 .services_card:hover {
     transform: scale(1.075);
     transition: 0.2s ease-in;
-} */
+}
 
-/* @media screen and (max-width: 1300px) {
+.main_img--container {
+    text-align: center;
+}
+
+.main_img {
+    height: 80%;
+    width: 80%;
+}
+
+@media screen and (max-width: 1300px) {
     .services_container {
         grid-template-columns: 1fr 1fr;
     }
@@ -129,6 +135,7 @@
         margin: 2rem;
         margin-top: 60px;
         justify-content: center;
+        
     }
 
     .services h1 {
@@ -142,9 +149,21 @@
         justify-content: center;
         margin-top: 5px;
     }
-} */
+}
 
+@media screen and (max-width: 768px) {
+    .services_container {
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+        justify-content: center;
+    }
+}
 
+@media screen and(max-width: 480px) {
 
-
-/* ******************************************************   MOBILE RESPONSE *************************************************************************** */
+    .services_container {
+        grid-template-columns: 1fr;
+        margin-top: 15px;
+        justify-content: center;
+    }
+}

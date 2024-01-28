@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/about.css';
-import companyPic from '../images/company.jpg';
 
 function About() {
   return (
