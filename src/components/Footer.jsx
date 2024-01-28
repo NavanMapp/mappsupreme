@@ -14,7 +14,7 @@ function Footer() {
         </div>
         <div className='footer_linkItems'>
           <h2>Contact Us</h2>
-          <a>Newcastle, Arbor Park</a>
+          <a href='/'>Newcastle, Arbor Park</a>
           <a href="mailto:mappsupreme@gmail.com">mappsupreme@gmail.com</a>
         </div>
         <div className='footer_linkItems'>

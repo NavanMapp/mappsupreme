@@ -5,7 +5,7 @@ export default function Banner() {
     return (
         <div className="navbar">
             <div className="logo_container">
-                <a href='#home'>
+                <a href='/'>
                     <img src={logo} alt="MAPP SUPREME" className="App-logo" />
                 </a>
             </div>
@@ -26,7 +26,7 @@ export default function Banner() {
                 <a href="#services" className="navbar_links">
                     Services
                 </a>
-                <a href="./login.html" className="button">
+                <a href="/" className="button">
                     Sign In
                 </a>
             </ul>
