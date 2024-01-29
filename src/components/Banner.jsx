@@ -1,5 +1,6 @@
 import '../styles/banner.css'
 import logo from '../images/logo.png'
+import { NavLink } from 'react-router-dom'
 
 export default function Banner() {
     return (
@@ -22,12 +23,11 @@ export default function Banner() {
                 <a href="#about" className="navbar_links">
                     About
                 </a>
-
                 <a href="#services" className="navbar_links">
                     Services
                 </a>
-                <a href="/" className="button">
-                    Sign In
+                <a>
+                    <NavLink to="/auth/login" className="button">Sign In</NavLink>
                 </a>
             </ul>
         </div>
