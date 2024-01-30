@@ -16,7 +16,7 @@ function Signup() {
                 <button className='button' >Continue</button>
             </form>
             <label>Already have an account?</label>
-            <a><Link to='/login' className=''>Login</Link></a>
+            <a href='/auth/login'><Link to='/auth/login' className=''>  Login</Link></a>
             <ul>OR</ul>
             <form>
                 <button className=''>Continue with Google</button>
