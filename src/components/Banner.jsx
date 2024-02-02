@@ -26,7 +26,7 @@ export default function Banner() {
                 <a href="#services" className="navbar_links">
                     Services
                 </a>
-                <a>
+                <a href='/auth/login'>
                     <NavLink to="/auth/login" className="button">Sign In</NavLink>
                 </a>
             </ul>

@@ -10,11 +10,9 @@ function Signup() {
         <div className='login-container'>
             <form className='login-form'>
                 <div className='login-heading'>
-                    <a href='/'>
-                        <Link to='/'>
-                            <img src={logo} alt="MAPP SUPREME" className="logo" />
-                        </Link>
-                    </a>
+                    <Link to='/'>
+                        <img src={logo} alt="MAPP SUPREME" className="logo" />
+                    </Link>
                     <h1>Create an account</h1>
                 </div>
                 <input type='text' name='Email Address'
@@ -24,11 +22,17 @@ function Signup() {
                 <button className='login-submit' >Continue</button>
             </form>
             <label>Already have an account?</label>
-            <a href='/auth/login'><Link to='/auth/login' className='login-link'>  Login</Link></a>
+            <a href='/auth/login'>
+                <Link to='/auth/login' className='login-link'>  Login</Link>
+            </a>
             <ul className='login-heading'> OR </ul>
             <form className='btn-container'>
-                <button className='google-btn'><img src={google} alt='Google Account' />Continue with Google</button>
-                <button className='microsoft-btn'><img src={microsoft} alt='Google Account' />Continue with Microsoft Account</button>
+                <button className='google-btn'>
+                    <img src={google} alt='Google Account' />Continue with Google
+                </button>
+                <button className='microsoft-btn'>
+                    <img src={microsoft} alt='Google Account' />Continue with Microsoft Account
+                </button>
             </form>
         </div>
     )
