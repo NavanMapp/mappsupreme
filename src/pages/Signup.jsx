@@ -2,7 +2,6 @@ import '../styles/login.css'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../images/logo.png'
-
 import google from '../images/google-logo.png'
 import microsoft from '../images/microsoft-logo.png'
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
@@ -14,16 +13,13 @@ export default function Signup() {
     const [auth, setAuth] = useState(false)
     const [token, setToken] = useState('')
 
-    useEffect(() => {
-        
-    })
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
-            const userCred = await createUserWithEmailAndPassword(auth, email, password)
+            const userCred = await createUserWithEmailAndPassword(firebase.auth(), email, password)
             console.log(userCred)
             const user = userCred.user
             localStorage.setItem('token', user.accessToken)

@@ -5,7 +5,7 @@ import '../styles/login.css'
 import google from '../images/google-logo.png'
 import microsoft from '../images/microsoft-logo.png'
 import firebase from '../config/firebase-config'
-import { signInUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 
 
 export default function Login() {
@@ -17,20 +17,11 @@ export default function Login() {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((userCred) => {
-      if (userCred) {
-        setAuth(true)
-        userCred.getIdToken().then((token) => {
-          setToken(token)
-        })
-      }
-    })
-  }, [])
-
   const handleLogin = async (e) => {
+    e.preventDefault()
+
     try {
-      const userCred = await signInUserWithEmailAndPassword(auth, email, password)
+      const userCred = await signInWithEmailAndPassword(firebase.auth(), email, password)
       console.log(userCred)
       const user = userCred.user
       localStorage.setItem('token', user.accessToken)
@@ -44,7 +35,7 @@ export default function Login() {
     e.preventDefault()
 
     try {
-      const userCred = await signInWithPopup(new firebase.auth.googleAuthProvider())
+      const userCred = await signInWithPopup(new firebase.googleAuthProvider())
         .then((userCred) => {
           if (userCred) {
             setAuth(userCred)
@@ -54,9 +45,21 @@ export default function Login() {
       console.log(error)
     }
 
+    useEffect(() => {
+      firebase.auth().onAuthStateChanged((userCred) => {
+        if (userCred && token) {
+          setAuth(true)
+          userCred.getIdToken().then((token) => {
+            setToken(user.accessToken)
+          })
+          localStorage.setItem('token', token)
+        }
+      })
+    }, [token])
+
     return (
       <div className='login-container'>
-        <form className='login-form'>
+        <form className='login-form' onSubmit={handleLogin}>
           <div className='login-heading'>
             <a href='/'>
               <Link to='/'>
@@ -66,10 +69,20 @@ export default function Login() {
             <h1>Welcome back</h1>
             <h2>Get started !!!😁</h2>
           </div>
-          <input type='text' name='Email Address'
-            placeholder='Email address' className='login-input' />
-          <input type='password' name='password'
-            placeholder='Password' className='login-input' />
+          <input type='text'
+            name='Your email'
+            placeholder='Email address'
+            className='login-input'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input type='password'
+            name='password'
+            placeholder='Password'
+            className='login-input'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <button className='login-submit' >Continue</button>
         </form>
         <label>Don't have an account?</label>
