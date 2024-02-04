@@ -1,2 +1,2 @@
 # mappsupreme
-MongoDB, ExpressJS, ReactJS &amp; NodeJS - Mapp Supreme
+Firebase, ExpressJS, ReactJS &amp; NodeJS - Mapp Supreme
