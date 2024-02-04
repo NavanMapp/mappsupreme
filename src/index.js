@@ -5,16 +5,14 @@ import {
 } from 'react-router-dom'
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import './config/firebase-config'
+import './firebase/config'
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 // import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Contact from './pages/Contact';
-import NoPage from './pages/NoPage';
-
+// import NoPage from './pages/NoPage';
 
 const router = createBrowserRouter([
   {
@@ -22,15 +20,15 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: '/auth/login',
+    path: 'login',
     element: <Login />
   },
   {
-    path: 'auth/signup',
+    path: 'signup',
     element: <Signup />
   },
   {
-    path: '/home',
+    path: 'home',
     element: <Home />
   },
   {
@@ -41,5 +39,3 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RouterProvider router={router} />);
-
-reportWebVitals();

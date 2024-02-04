@@ -11,8 +11,8 @@ function About() {
           <h1>NEXT GENERATION</h1>
           <h2>TECHNOLOGY</h2>
           <h2>See what makes us different</h2>
-          <a href='/auth/login'>
-            <Link to='/auth/login' className='main_btn'>Get Started</Link>
+          <a href='login'>
+            <Link to='login' className='main_btn'>Get Started</Link>
           </a>
         </div>
         <div className='main_content'>
