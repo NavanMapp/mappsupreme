@@ -1,6 +1,6 @@
 import '../styles/login.css'
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, Redirect } from 'react-router-dom'
 import logo from '../images/logo.png'
 import google from '../images/google-logo.png'
 import microsoft from '../images/microsoft-logo.png'
@@ -8,8 +8,6 @@ import {
     getAuth, createUserWithEmailAndPassword,
     signInWithPopup, GoogleAuthProvider
 } from 'firebase/auth'
-import firebaseApp from '../firebase/config'
-import { async } from '@firebase/util'
 
 export default function Signup() {
     const [userCredentials, setUserCredentials] = useState({})
@@ -18,6 +16,7 @@ export default function Signup() {
     const [auth, setAuth] = useState(false)
     const [token, setToken] = useState('')
     const [error, setError] = useState('')
+    const [isSignedUp, setIsSignedUp] = useState(false)
 
     const navigate = useNavigate()
 
@@ -32,6 +31,8 @@ export default function Signup() {
         createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
             .then((userCredential) => {
                 const user = userCredential.user
+                console.log(user)
+                setIsSignedUp(true)
             })
             .catch((error) => {
                 const errorCode = error.code
@@ -39,6 +40,10 @@ export default function Signup() {
                 console.log(error)
                 setError(error.message)
             })
+//      if credentials go through, page should redirect to '/login'
+        // if (isSignedUp) {
+        //     return <Redirect to='/login' />
+        // }
     }
 
     const signInWithGoogle = async (e) => {
@@ -52,6 +57,7 @@ export default function Signup() {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const userCred = result.user;
+            setIsSignedUp(true)
             // Proceed with further actions after successful sign-in
         } catch (error) {
             const errorCode = error.code;
@@ -59,6 +65,9 @@ export default function Signup() {
             const email = error.customData?.email; // Accessing 'customData' if available
             const credential = GoogleAuthProvider.credentialFromError(error);
             // Handle error appropriately
+        }
+        if (isSignedUp) {
+            return <Link to='/login' />
         }
     }
 
