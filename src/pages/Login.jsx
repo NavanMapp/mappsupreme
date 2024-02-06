@@ -29,6 +29,7 @@ export default function Login() {
   // }, [])
 
   const handleLogin = async (e) => {
+    e.preventDefault()
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password)
       console.log(userCred)
@@ -41,53 +42,51 @@ export default function Login() {
     }
   }
   const loginWithGoogle = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
 
-    const auth = getAuth()
-    signInWithPopup(auth)
-      .then((result) => {
-        const userCred = GoogleAuthProvider.credentialFromResult(result)
-        const token = userCred.accessToken
+    // const auth = getAuth()
+    // signInWithPopup(auth)
+    //   .then((result) => {
+    //     const userCred = GoogleAuthProvider.credentialFromResult(result)
+    //     const token = userCred.accessToken
 
-        const user = result.user
-      }).catch((error) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        const email = error.customData.email
-        const userCred = GoogleAuthProvider.credentialFromError(error)
-      })
+    //     const user = result.user
+    //   }).catch((error) => {
+    //     const errorCode = error.code
+    //     const errorMessage = error.message
+    //     const email = error.customData.email
+    //     const userCred = GoogleAuthProvider.credentialFromError(error)
+    //   })
   }
 
   return (
     <div className='login-container'>
-      <form className='login-form' onSubmit={handleLogin}>
+      <form className='login-form'>
         <div className='login-heading'>
-          <a href='/'>
-            <Link to='/'>
-              <img src={logo} alt="MAPP SUPREME" className="logo" />
-            </Link>
-          </a>
+          <Link to='/'>
+            <img src={logo} alt="MAPP SUPREME" className="logo" />
+          </Link>
           <h1>Welcome back</h1>
           <h2>Get started !!!😁</h2>
         </div>
         <input type='text'
-          name='Your email'
+          name='Your email' required
           placeholder='Email address'
           className='login-input'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input type='password'
-          name='password'
+          name='password' required
           placeholder='Password'
           className='login-input'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className='login-submit' >Continue</button>
+        <button onClick={(e) => handleLogin(e)} className='login-submit' >Continue</button>
       </form>
       <label>Don't have an account?</label>
-      <a href='/signup'><Link to='/signup' className='login-link'>  Sign up</Link></a>
+      <Link to='/signup' className='login-link'>  Sign up</Link>
       <ul className='login-heading'> OR </ul>
       <form className='btn-container'>
         {auth ? (

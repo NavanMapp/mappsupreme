@@ -16,7 +16,7 @@ export default function Banner() {
                 <span className="bar"></span>
                 <span className="bar"></span>
             </div>
-            <ul className="navbar_menu">
+            <div className="navbar_menu">
                 <a href="#home" className="navbar_links">
                     Home
                 </a>
@@ -26,10 +26,8 @@ export default function Banner() {
                 <a href="#services" className="navbar_links">
                     Services
                 </a>
-                <a href='/login'>
-                    <Link to="/login" className="button">Sign In</Link>
-                </a>
-            </ul>
+                <Link to="/login" className="button">Sign In</Link>
+            </div>
         </div>
     )
 }
