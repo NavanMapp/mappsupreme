@@ -5,56 +5,70 @@ import logo from '../images/logo.png'
 import google from '../images/google-logo.png'
 import microsoft from '../images/microsoft-logo.png'
 import { auth } from '../firebase/config.js'
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import {
+    getAuth, createUserWithEmailAndPassword,
+    signInWithPopup, GoogleAuthProvider
+} from 'firebase/auth'
 import firebaseApp from '../firebase/config'
+import { async } from '@firebase/util'
 
 export default function Signup() {
     const [userCredentials, setUserCredentials] = useState({})
-    // const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [auth, setAuth] = useState(false)
     const [token, setToken] = useState('')
 
     const navigate = useNavigate()
 
-    function handleCredentials(e) {
-        // e.preventDefault()
-        setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value })
-        console.log(userCredentials)
+    const handleCredentials = async (e) => {
+        e.preventDefault()
+        try {
+            setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value })
+        } catch (error) {
+            const errorCode = error.code
+            const errorMessage = error.message
+        }
     }
 
     const handleSignup = async (e) => {
         e.preventDefault()
 
-        // const auth = getAuth()
-        // createUserWithEmailAndPassword(auth, email, password)
-        //     .then((userCredential) => {
-        //         // Signed up 
-        //         const user = userCredential.user
-        //         // ...
-        //     })
-        //     .catch((error) => {
-        //         const errorCode = error.code
-        //         const errorMessage = error.message
-        //         // ..
-        //     })
+        const auth = getAuth()
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code
+                const errorMessage = error.message
+                // ..
+            })
         console.log(userCredentials)
 
     }
 
     const signInWithGoogle = async (e) => {
-        // e.preventDefault()
+        e.preventDefault()
 
-        // try {
-        //     const userCred = await signInWithPopup(new firebaseApp.auth.googleAuthProvider())
-        //         .then((userCred) => {
-        //             if (userCred) {
-        //                 setAuth(userCred)
-        //             }
-        //         })
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        const provider = new GoogleAuthProvider()
+
+        try {
+            const auth = getAuth();
+            const result = await signInWithPopup(auth, provider); // signInWithPopup returns a Promise
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const userCred = result.user;
+            // Proceed with further actions after successful sign-in
+        } catch (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.customData?.email; // Accessing 'customData' if available
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // Handle error appropriately
+        }
     }
 
     return (
@@ -70,14 +84,12 @@ export default function Signup() {
                     name='email' required
                     placeholder='Your email'
                     className='login-input'
-                    // value={email}
                     onChange={(e) => handleCredentials(e)}
                 />
                 <input type='password'
                     name='password' required
                     placeholder='Password'
                     className='login-input'
-                    // value={password}
                     onChange={(e) => handleCredentials(e)}
                 />
                 <button onClick={(e) => handleSignup(e)} className='login-submit' >Continue</button>
@@ -89,7 +101,7 @@ export default function Signup() {
                 {auth ? (
                     <Link to='/login'></Link>
                 ) : (
-                    <button onClick={signInWithGoogle} className='google-btn'>
+                    <button onClick={(e) => signInWithGoogle(e)} className='google-btn'>
                         <img src={google} alt='Google Account' />
                         Continue with Google
                     </button>
