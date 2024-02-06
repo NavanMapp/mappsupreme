@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from '../images/logo.png'
 import google from '../images/google-logo.png'
 import microsoft from '../images/microsoft-logo.png'
-import { auth } from '../firebase/config.js'
 import {
     getAuth, createUserWithEmailAndPassword,
     signInWithPopup, GoogleAuthProvider
@@ -18,36 +17,28 @@ export default function Signup() {
     const [password, setPassword] = useState('')
     const [auth, setAuth] = useState(false)
     const [token, setToken] = useState('')
+    const [error, setError] = useState('')
 
     const navigate = useNavigate()
 
-    const handleCredentials = async (e) => {
-        e.preventDefault()
-        try {
-            setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value })
-        } catch (error) {
-            const errorCode = error.code
-            const errorMessage = error.message
-        }
+    function handleCredentials(e) {
+        setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value })
     }
 
-    const handleSignup = async (e) => {
+    function handleSignup(e) {
         e.preventDefault()
 
         const auth = getAuth()
-        createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
             .then((userCredential) => {
-                // Signed up 
                 const user = userCredential.user
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code
                 const errorMessage = error.message
-                // ..
+                console.log(error)
+                setError(error.message)
             })
-        console.log(userCredentials)
-
     }
 
     const signInWithGoogle = async (e) => {
@@ -93,6 +84,9 @@ export default function Signup() {
                     onChange={(e) => handleCredentials(e)}
                 />
                 <button onClick={(e) => handleSignup(e)} className='login-submit' >Continue</button>
+                {/* {
+                    error && <div className='error'>{error}</div>
+                } */}
             </form>
             <label>Already have an account?</label>
             <Link to='/signup' className='login-link'>  Login</Link>
