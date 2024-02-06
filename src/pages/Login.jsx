@@ -4,7 +4,7 @@ import logo from '../images/logo.png'
 import '../styles/login.css'
 import google from '../images/google-logo.png'
 import microsoft from '../images/microsoft-logo.png'
-import firebaseApp from '../firebase/config.js'
+import { auth } from '../firebase/config.js'
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 

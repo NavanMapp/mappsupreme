@@ -9,18 +9,16 @@ import { getAuth, createUserWithEmailAndPassword, signInWithPopup } from 'fireba
 import firebaseApp from '../firebase/config'
 
 export default function Signup() {
-    const [userCredential, setuserCredential] = useState({})
+    const [userCredentials, setUserCredentials] = useState({})
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [auth, setAuth] = useState(false)
-    // const [token, setToken] = useState('')
+    const [token, setToken] = useState('')
 
     const navigate = useNavigate()
 
     function handleCredentials(e) {
-        setuserCredential({ ...userCredential, [e.target.name]: [e.target.value] })
-
-
+        setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value })
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -63,17 +61,20 @@ export default function Signup() {
                     </Link>
                     <h1>Create an account</h1>
                 </div>
-                <input type='email' placeholder='Email address'
+                <input
+                    type='email' placeholder='Email address'
                     name='email'
                     className='login-input' required value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {handleCredentials(e)}}
                 />
-                <input type='password' required value={password}
+                <input
+                    type='password' required value={password}
                     name='password'
                     placeholder='Password' className='login-input'
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {handleCredentials(e)}}
+
                 />
-                <button className='login-submit' >Continue</button>
+                <button onClick={(e) => handleSubmit(e)} className='login-submit' >Continue</button>
             </form>
             <label>Already have an account?</label>
             <a href='/login'>
