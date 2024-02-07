@@ -5,7 +5,13 @@ import '../styles/login.css'
 import google from '../images/google-logo.png'
 import microsoft from '../images/microsoft-logo.png'
 import { auth } from '../firebase/config.js'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail
+} from 'firebase/auth'
 
 
 export default function Login() {
@@ -14,6 +20,7 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [auth, setAuth] = useState(false)
   const [token, setToken] = useState('')
+  const [error, setError] = useState('')
 
   const navigate = useNavigate()
 
@@ -42,21 +49,33 @@ export default function Login() {
     }
   }
   const loginWithGoogle = async (e) => {
-    // e.preventDefault()
+    e.preventDefault()
 
-    // const auth = getAuth()
-    // signInWithPopup(auth)
-    //   .then((result) => {
-    //     const userCred = GoogleAuthProvider.credentialFromResult(result)
-    //     const token = userCred.accessToken
+    const auth = getAuth()
+    signInWithPopup(auth)
+      .then((result) => {
+        const userCred = GoogleAuthProvider.credentialFromResult(result)
+        const token = userCred.accessToken
 
-    //     const user = result.user
-    //   }).catch((error) => {
-    //     const errorCode = error.code
-    //     const errorMessage = error.message
-    //     const email = error.customData.email
-    //     const userCred = GoogleAuthProvider.credentialFromError(error)
-    //   })
+        const user = result.user
+        console.log(user)
+      }).catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        const email = error.customData.email
+        const userCred = GoogleAuthProvider.credentialFromError(error)
+      })
+  }
+
+  function handleResetPassword() {
+    const email = prompt('Enter your email address below!')
+    const auth = getAuth()
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert('Email sent, check your inbox')
+      }).catch((error) => {
+        alert(error)
+      })
   }
 
   return (
@@ -84,6 +103,10 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={(e) => handleLogin(e)} className='login-submit' >Continue</button>
+        {
+          error && <div className='error'>{error}</div>
+        }
+        <Link onClick={handleResetPassword} className='login-link'>Forgot Password?</Link>
       </form>
       <label>Don't have an account?</label>
       <Link to='/signup' className='login-link'>  Sign up</Link>
