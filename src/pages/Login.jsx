@@ -14,6 +14,7 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [auth, setAuth] = useState(false)
   const [token, setToken] = useState('')
+  const [error, setError]=useState('')
 
   const navigate = useNavigate()
 
@@ -37,26 +38,27 @@ export default function Login() {
       localStorage.setItem('token', user.accessToken)
       localStorage.setItem('token', JSON.stringify(user))
       navigate('/home')
+      setError('')
     } catch (error) {
-      console.log(error)
+      setError(error.message)
     }
   }
   const loginWithGoogle = async (e) => {
-    // e.preventDefault()
+    e.preventDefault()
 
-    // const auth = getAuth()
-    // signInWithPopup(auth)
-    //   .then((result) => {
-    //     const userCred = GoogleAuthProvider.credentialFromResult(result)
-    //     const token = userCred.accessToken
+    const auth = getAuth()
+    signInWithPopup(auth)
+      .then((result) => {
+        const userCred = GoogleAuthProvider.credentialFromResult(result)
+        const token = userCred.accessToken
 
-    //     const user = result.user
-    //   }).catch((error) => {
-    //     const errorCode = error.code
-    //     const errorMessage = error.message
-    //     const email = error.customData.email
-    //     const userCred = GoogleAuthProvider.credentialFromError(error)
-    //   })
+        const user = result.user
+      }).catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        const email = error.customData.email
+        const userCred = GoogleAuthProvider.credentialFromError(error)
+      })
   }
 
   return (
@@ -73,17 +75,18 @@ export default function Login() {
           name='Your email' required
           placeholder='Email address'
           className='login-input'
-          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input type='password'
           name='password' required
           placeholder='Password'
           className='login-input'
-          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={(e) => handleLogin(e)} className='login-submit' >Continue</button>
+        {
+          error && <div className='error' >{error}</div>
+        }
       </form>
       <label>Don't have an account?</label>
       <Link to='/signup' className='login-link'>  Sign up</Link>

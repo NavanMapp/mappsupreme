@@ -22,6 +22,7 @@ export default function Signup() {
 
     function handleCredentials(e) {
         setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value })
+        setError('')
     }
 
     function handleSignup(e) {
@@ -31,13 +32,10 @@ export default function Signup() {
         createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
             .then((userCredential) => {
                 const user = userCredential.user
-                console.log(user)
                 setIsSignedUp(true)
+                alert('Signed up successfully!!! - Go to login Page')
             })
             .catch((error) => {
-                const errorCode = error.code
-                const errorMessage = error.message
-                console.log(error)
                 setError(error.message)
             })
 //      if credentials go through, page should redirect to '/login'
@@ -93,12 +91,12 @@ export default function Signup() {
                     onChange={(e) => handleCredentials(e)}
                 />
                 <button onClick={(e) => handleSignup(e)} className='login-submit' >Continue</button>
-                {/* {
+                {
                     error && <div className='error'>{error}</div>
-                } */}
+                }
             </form>
             <label>Already have an account?</label>
-            <Link to='/signup' className='login-link'>  Login</Link>
+            <Link to='/login' className='login-link'>  Login</Link>
             <ul className='login-heading'> OR </ul>
             <form className='btn-container'>
                 {auth ? (
