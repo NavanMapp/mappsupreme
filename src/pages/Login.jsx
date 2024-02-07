@@ -4,8 +4,13 @@ import logo from '../images/logo.png'
 import '../styles/login.css'
 import google from '../images/google-logo.png'
 import microsoft from '../images/microsoft-logo.png'
-import { auth } from '../firebase/config.js'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail
+} from 'firebase/auth'
 
 
 export default function Login() {
@@ -14,7 +19,7 @@ export default function Login() {
   const [password, setPassword] = useState('')
   const [auth, setAuth] = useState(false)
   const [token, setToken] = useState('')
-  const [error, setError]=useState('')
+  const [error, setError] = useState('')
 
   const navigate = useNavigate()
 
@@ -31,18 +36,21 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    try {
-      const userCred = await signInWithEmailAndPassword(auth, email, password)
-      console.log(userCred)
-      const user = userCred.user
-      localStorage.setItem('token', user.accessToken)
-      localStorage.setItem('token', JSON.stringify(user))
-      navigate('/home')
-      setError('')
-    } catch (error) {
-      setError(error.message)
-    }
+
+    const auth = getAuth()
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCred) => {
+        const user = userCred.user
+        localStorage.setItem('token', user.accessToken)
+        localStorage.setItem('token', JSON.stringify(user))
+        navigate('/home')
+        setError('')
+        console.log('logged in')
+      }).catch((error) => {
+        setError(error.message)
+      })
   }
+
   const loginWithGoogle = async (e) => {
     e.preventDefault()
 
@@ -51,7 +59,6 @@ export default function Login() {
       .then((result) => {
         const userCred = GoogleAuthProvider.credentialFromResult(result)
         const token = userCred.accessToken
-
         const user = result.user
       }).catch((error) => {
         const errorCode = error.code
@@ -59,6 +66,12 @@ export default function Login() {
         const email = error.customData.email
         const userCred = GoogleAuthProvider.credentialFromError(error)
       })
+  }
+
+  function handlePasswordReset() {
+    const email = prompt('Please enter your email!')
+    sendPasswordResetEmail(auth, email)
+    alert('Email link sent, check your email inbox!')
   }
 
   return (
@@ -69,7 +82,7 @@ export default function Login() {
             <img src={logo} alt="MAPP SUPREME" className="logo" />
           </Link>
           <h1>Welcome back</h1>
-          <h2>Get started !!!😁</h2>
+          <h2>Login !!!😁</h2>
         </div>
         <input type='text'
           name='Your email' required
@@ -84,9 +97,7 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={(e) => handleLogin(e)} className='login-submit' >Continue</button>
-        {
-          error && <div className='error' >{error}</div>
-        }
+      <Link onClick={handlePasswordReset} className='login-link'> Forgot Password?</Link>
       </form>
       <label>Don't have an account?</label>
       <Link to='/signup' className='login-link'>  Sign up</Link>

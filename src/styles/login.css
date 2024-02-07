@@ -148,3 +148,7 @@ label {
 .microsoft-btn:hover {
     background-color: #9ebbe2;
 }
+
+.error {
+    color: red;
+}

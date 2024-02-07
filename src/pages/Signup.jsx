@@ -34,14 +34,11 @@ export default function Signup() {
                 const user = userCredential.user
                 setIsSignedUp(true)
                 alert('Signed up successfully!!! - Go to login Page')
+                navigate('/login')
             })
             .catch((error) => {
                 setError(error.message)
             })
-//      if credentials go through, page should redirect to '/login'
-        // if (isSignedUp) {
-        //     return <Redirect to='/login' />
-        // }
     }
 
     const signInWithGoogle = async (e) => {
