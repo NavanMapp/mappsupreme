@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from '../images/logo.png'
 import '../styles/login.css'
 import google from '../images/google-logo.png'
+import '../firebase/config.js'
 import microsoft from '../images/microsoft-logo.png'
 import {
   getAuth,
@@ -97,7 +98,7 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={(e) => handleLogin(e)} className='login-submit' >Continue</button>
-      <Link onClick={handlePasswordReset} className='login-link'> Forgot Password?</Link>
+        <Link onClick={handlePasswordReset} className='login-link'> Forgot Password?</Link>
       </form>
       <label>Don't have an account?</label>
       <Link to='/signup' className='login-link'>  Sign up</Link>

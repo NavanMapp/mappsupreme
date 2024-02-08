@@ -62,7 +62,7 @@ export default function Signup() {
             // Handle error appropriately
         }
         if (isSignedUp) {
-            return <Link to='/login' />
+            navigate('/login')
         }
     }
 
