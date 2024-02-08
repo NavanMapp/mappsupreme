@@ -12,6 +12,7 @@ import {
   signInWithPopup,
   sendPasswordResetEmail
 } from 'firebase/auth'
+import Swal from 'sweetalert2'
 
 
 export default function Login() {
@@ -24,17 +25,6 @@ export default function Login() {
 
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   firebaseApp.auth().onAuthStateChanged((userCred) => {
-  //     if (userCred) {
-  //       setAuth(true)
-  //       userCred.getIdToken().then((token) => {
-  //         setToken(token)
-  //       })
-  //     }
-  //   })
-  // }, [])
-
   const handleLogin = async (e) => {
     e.preventDefault()
 
@@ -44,10 +34,12 @@ export default function Login() {
         const user = userCred.user
         localStorage.setItem('token', user.accessToken)
         localStorage.setItem('token', JSON.stringify(user))
+        Swal.fire('Success!', 'You have successfully logged In!', 'Success')
         navigate('/home')
         setError('')
         console.log('logged in')
       }).catch((error) => {
+        Swal.fire('Error', error.message, 'error')
         setError(error.message)
       })
   }
@@ -61,18 +53,34 @@ export default function Login() {
         const userCred = GoogleAuthProvider.credentialFromResult(result)
         const token = userCred.accessToken
         const user = result.user
+        Swal.fire('Success!', 'You have successfully logged In!', 'Success')
+        navigate('/home')
+        setError('')
       }).catch((error) => {
         const errorCode = error.code
         const errorMessage = error.message
         const email = error.customData.email
         const userCred = GoogleAuthProvider.credentialFromError(error)
+        Swal.fire('Error', error.message, 'error')
       })
   }
 
   function handlePasswordReset() {
-    const email = prompt('Please enter your email!')
-    sendPasswordResetEmail(auth, email)
-    alert('Email link sent, check your email inbox!')
+      Swal.fire({
+      title: 'Please enter your email!',
+      input: 'email',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Ok',
+      cancelButtonText: 'Cancel',
+      preConfirm: (email) => {
+        sendPasswordResetEmail(auth, email)
+      }
+    }).then(() => {
+      Swal.fire('Success','Email link sent, check your email inbox!','Ok')
+    })
   }
 
   return (

@@ -8,6 +8,7 @@ import {
     getAuth, createUserWithEmailAndPassword,
     signInWithPopup, GoogleAuthProvider
 } from 'firebase/auth'
+import Swal from 'sweetalert2'
 
 export default function Signup() {
     const [userCredentials, setUserCredentials] = useState({})
@@ -33,7 +34,7 @@ export default function Signup() {
             .then((userCredential) => {
                 const user = userCredential.user
                 setIsSignedUp(true)
-                alert('Signed up successfully!!! - Go to login Page')
+                Swal.fire('Success!','Signed up successfully!!!', 'Go to login Page')
                 navigate('/login')
             })
             .catch((error) => {
