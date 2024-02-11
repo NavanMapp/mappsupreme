@@ -1,0 +1,85 @@
+.main {
+    font-family: "Helvetica Neue", "Open Sans", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none solid rgb(33, 37, 41);
+    text-align: left;
+    justify-content: center;
+    display: block;
+    word-spacing: 0px;
+    background-color: #FFFFFF;
+    background-position: 0% 0%;
+    color: #212529;
+    transform: none;
+    transition: all 0s ease 0s;
+    outline: rgb(255, 0, 0) dashed 1px;
+    box-sizing: border-box;
+}
+
+.main_container {
+    margin: auto;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 100px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Center vertically on the page */
+}
+
+.main_container label {
+    display: inline-block;
+    height: 23px;
+    width: 432px;
+    margin: 0 0 8ox 0;
+    box-sizing: border-box;
+}
+
+.main_container h1 {
+    font-family: 'Open Sans';
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.main_container p {
+    font-family: 'Open Sans';
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.main_container input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    outline: none;
+    transition: border-bottom 0.3s;
+    white-space: pre-wrap;
+}
+
+.main textarea {
+    font-size: 22px;
+    line-height: 31.9px;
+    width: 95%;
+    white-space: pre-wrap;
+    height: 182.453px;
+    border: 1px solid #c3c3c3;
+    margin: 0 0 24px 0;
+    padding: 15px 20px 6px 12px;
+}
+
+.main_container button {
+    height: 40px;
+    width: 129px;
+    border: 1px solid #003465;
+    margin: 16px 16px 16px 16px;
+    padding: 9px 9px 9px 9px;
+    min-height: auto;
+    min-width: 129px
+}
+
+.btnLog {
+    text-align: right;
+}
