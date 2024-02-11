@@ -29,7 +29,7 @@ function Ticket() {
 
   function handleLogTicket(userId, userName, userSurname, faultDescription) {
     const db = getDatabase()
-    set(ref(db, 'users/' + userId), {
+    set(ref(db, 'tickets/' + userId), {
       name: userInput.userName,
       surname: userInput.userSurname,
       fault: userInput.fault,
