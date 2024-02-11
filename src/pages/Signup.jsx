@@ -34,7 +34,7 @@ export default function Signup() {
             .then((userCredential) => {
                 const user = userCredential.user
                 setIsSignedUp(true)
-                Swal.fire('Success!','Signed up successfully!!!', 'Go to login Page')
+                Swal.fire('Success!', 'Signed up successfully!!!', 'Go to login Page')
                 navigate('/login')
             })
             .catch((error) => {
