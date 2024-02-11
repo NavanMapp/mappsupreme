@@ -3,7 +3,7 @@ import '../styles/ticket.css'
 import Banner from '../components/Banner'
 import { Dropdown } from 'primereact/dropdown'
 
-function Home() {
+function Ticket() {
   const [userInput, setUserInput] = useState({})
   const [userName, setUserName] = useState('')
   const [userSurname, setUserSurname] = useState('')
@@ -75,4 +75,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Ticket

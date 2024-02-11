@@ -35,7 +35,7 @@ export default function Login() {
         localStorage.setItem('token', user.accessToken)
         localStorage.setItem('token', JSON.stringify(user))
         Swal.fire('Success!', 'You have successfully logged In!', 'Success')
-        navigate('/home')
+        navigate('/ticket')
         setError('')
         console.log('logged in')
       }).catch((error) => {
@@ -54,7 +54,7 @@ export default function Login() {
         const token = userCred.accessToken
         const user = result.user
         Swal.fire('Success!', 'You have successfully logged In!', 'Success')
-        navigate('/home')
+        navigate('/ticket')
         setError('')
       }).catch((error) => {
         const errorCode = error.code
@@ -113,7 +113,7 @@ export default function Login() {
       <ul className='login-heading'> OR </ul>
       <form className='btn-container'>
         {auth ? (
-          <Link to='/home'></Link>
+          <Link to='/ticket'></Link>
         ) : (
           <button onClick={loginWithGoogle} className='google-btn'>
             <img src={google} alt='Google Account' />

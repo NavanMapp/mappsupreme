@@ -7,8 +7,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './firebase/config'
 import App from './App';
-// import Layout from './pages/Layout';
-import Home from './pages/Home';
+import Ticket from './pages/Ticket';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Contact from './pages/Contact';
@@ -28,8 +27,8 @@ const router = createBrowserRouter([
     element: <Signup />
   },
   {
-    path: 'home',
-    element: <Home />
+    path: 'ticket',
+    element: <Ticket />
   },
   {
     path: 'contact',
