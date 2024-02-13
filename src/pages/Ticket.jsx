@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import '../styles/ticket.css'
 import Banner from '../components/Banner'
+import Footer from '../components/Footer'
 import { Dropdown } from 'primereact/dropdown'
 import { getDatabase, ref, set } from 'firebase/database'
+import { collection, addDoc } from 'firebase/firestore'
+import { db } from '../firebase/config'
 
 function Ticket() {
   const [userInput, setUserInput] = useState({})
-  const [userName, setUserName] = useState('')
-  const [userSurname, setUserSurname] = useState('')
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
+  const [fault, setFault] = useState('')
   const [faultDescription, setFaultDescription] = useState('')
   const [selectedCategory, setSelectedCategory] = useState(null)
 
@@ -27,14 +31,26 @@ function Ticket() {
     console.log('File uploaded')
   }
 
-  function handleLogTicket(userId, userName, userSurname, faultDescription) {
-    const db = getDatabase()
-    set(ref(db, 'tickets/' + userId), {
-      name: userInput.userName,
-      surname: userInput.userSurname,
+  function handleLogTicket(e, userId) {
+    e.preventDefault()
+
+    const today = new Date()
+
+    const data = {
+      // userId: userId,
+      name: userInput.name,
+      surname: userInput.surname,
       fault: userInput.fault,
       faultDescription: userInput.faultDescription,
-    })
+      created_at: today.getFullYear() + ' ' + (today.getMonth() + 1) + ' ' + today.getDate()
+    }
+
+    try {
+      const ref = addDoc(collection(db, 'tickets'), data)
+      console.log('Data successfully written into database.')
+    } catch (error) {
+      console.error('Error writing data to the database', error)
+    }
   }
 
   return (
@@ -72,7 +88,7 @@ function Ticket() {
         <textarea required
           placeholder='Can you give us a description of the issue?'
           type='text'
-          name='textarea'
+          name='faultDescription'
           shape="" coords="" href="" alt=""
           onChange={(e) => handleInput(e)}
         />
@@ -84,7 +100,7 @@ function Ticket() {
           <button onClick={(e) => handleLogTicket(e)}>Log ticket</button>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

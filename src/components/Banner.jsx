@@ -26,7 +26,7 @@ export default function Banner() {
                 <a href="#services" className="navbar_links">
                     Services
                 </a>
-                <Link to="/login" className="button">Sign In</Link>
+                {/* <Link to="/login" className="button">Sign In</Link> */}
             </div>
         </div>
     )
