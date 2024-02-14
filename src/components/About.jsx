@@ -29,8 +29,12 @@ function About() {
             We understand that effective IT solutions are essential to business success
             and we strive to provide our clients with the best possible service.
           </p>
-          <button className='main_btn'>Schedule Call</button>
+
         </div>
+        <div className='button'>
+          <Link to="/login" className="main_btn">Schedule Call</Link>
+        </div>
+
       </div>
     </div>
   );

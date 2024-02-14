@@ -48,6 +48,7 @@
 .main_content {
     padding-bottom: 20rem;
     padding-top: 10rem;
+    text-align: center;
     color: #fff;
     display: grid;
     justify-content: center;
@@ -72,14 +73,16 @@
 }
 
 .main_btn {
-    justify-self: center;
-    font-size: 1rem;
-    background: #238636;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     padding: 10px 20px;
+    height: auto;
+    width: auto;
     border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.35s;
     outline: none;
+    border-radius: 4px;
+    background: #238636;
+    color: #fff;
+    transition: all 0.3s ease;
 }

@@ -1,8 +1,57 @@
 import '../styles/banner.css'
 import logo from '../images/logo.png'
 import { Link } from 'react-router-dom'
+import React, { useEffect, useRef } from 'react'
 
 export default function Banner() {
+
+    const scrolling = useRef < HTMLDivElement > (null)
+
+    useEffect(() => {
+        function scrollToAbout() {
+            if (scrolling.current) {
+                scrolling.current.scrollTo({
+                    top: 600,
+                    behavior: 'smooth',
+                });
+            }
+        }
+
+        function scrollToServie() {
+            if (scrolling.current) {
+                scrolling.current.scrollTo({
+                    top: 960,
+                    behavior: 'smooth',
+                });
+            }
+        }
+
+        function scrollToHome() {
+            if (scrolling.current) {
+                scrolling.current.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            }
+        }
+
+        scrollToHome()
+    }, [])
+
+    function handleScrolling(e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault()
+
+        const sectionId = e.target.hash.substring(1)
+
+        if (sectionId === 'home') {
+            scrollToHome()
+        } else if (sectionId === 'about') {
+            scrollToAbout()
+        } else if (sectionId === 'service') {
+            scrollToServie()
+        }
+    }
+
     return (
         <div className="navbar">
             <div className="logo_container">

@@ -1,101 +1,100 @@
 .navbar {
-    background: #282c34;
-    height: 80px;
-    display: flex;
-    padding-top: 17px;
-    padding-bottom: 15px;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+  background: #282c34;
+  height: 80px;
+  display: flex;
+  padding-top: 17px;
+  padding-bottom: 15px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .App-logo {
-    height: 10vmin;
-    pointer-events: none;
+  height: 10vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 125px;
+    width: 95px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
   }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-      height: 125px;
-      width: 95px;
-      text-align: right;
-      display: flex;
-      justify-content: flex-end;
-      flex-direction: row;
-      align-items: center;
-    }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(360deg);
   }
 
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(360deg);
-    }
-    to {
-      transform: rotate(0deg);
-    }
+  to {
+    transform: rotate(0deg);
   }
+}
 
 .navbar_container {
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    z-index: 1;
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 50px;
 }
 
 .navbar_menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
 }
 
 .navbar_links {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 125px;
-    text-decoration: none;
-    padding: 0 1rem;
-    height: 100%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
 }
 
-.fa-gem{
-    margin-right: 0.5rem;
+.fa-gem {
+  margin-right: 0.5rem;
 }
 
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    padding: 10px 20px;
-    height: auto;
-    width: auto;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    background: rgb(57, 199, 187);
-    color: #fff;
-    transition: all 0.3s ease;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  height: auto;
+  width: auto;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: #fff;
 }
 
-.button:hover {
-    background: #b8847e;
-    transition: all 0.3s ease;
+.main_btn:hover {
+  background: #ad483d;
+  transition: all 0.3s ease;
 }
 
 .navbar_links:hover {
-    color: #f77062;
-    transition: all 0.3s ease;
+  color: #f77062;
+  transition: all 0.3s ease;
 }
 
 
@@ -105,46 +104,48 @@
 /* Mobile Phones (Up to 767px) */
 @media screen and (max-width: 767px) {
   .navbar_menu {
-      height: auto; /* Adjust height for mobile menu on smaller screens */
-      display: none; /* Hide menu by default */
-      position: static;
-      opacity: 1;
-      background: none;
+    height: auto;
+    /* Adjust height for mobile menu on smaller screens */
+    display: none;
+    /* Hide menu by default */
+    position: static;
+    opacity: 1;
+    background: none;
   }
 
   .navbar_menu.active {
-      display: flex;
-      flex-direction: column;
-      background: #131313;
+    display: flex;
+    flex-direction: column;
+    background: #131313;
   }
 
   .navbar_links {
-      padding: 1rem;
+    padding: 1rem;
   }
 
   #mobile-menu {
-      top: 10%;
-      right: 5%;
-      transform: translate(5%, 10%);
+    top: 10%;
+    right: 5%;
+    transform: translate(5%, 10%);
   }
 }
 
 /* Tablets (768px - 1024px) */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .navbar_links {
-      padding: 1.5rem;
+    padding: 1.5rem;
   }
 
   #mobile-menu {
-      top: 15%;
-      right: 5%;
-      transform: translate(5%, 15%);
+    top: 15%;
+    right: 5%;
+    transform: translate(5%, 15%);
   }
 }
 
 /* Desktops and Larger Screens (Above 1024px) */
 @media screen and (min-width: 1025px) {
   .navbar_links {
-      padding: 2rem;
+    padding: 2rem;
   }
 }
