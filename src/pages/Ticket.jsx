@@ -31,7 +31,7 @@ function Ticket() {
     console.log('File uploaded')
   }
 
-  function handleLogTicket(e, userId) {
+  function handleLogTicket(e, identifier) {
     e.preventDefault()
 
     const today = new Date()

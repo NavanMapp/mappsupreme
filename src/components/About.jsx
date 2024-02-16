@@ -1,9 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/about.css';
+import { useAuth } from '../auth/auth';
 
 
 function About() {
+
+  const { isLoggedIn, handleLoginPage } = useAuth()
+
   return (
     <div className='about_container'>
       <div>
@@ -11,7 +15,7 @@ function About() {
           <h1>NEXT GENERATION</h1>
           <h2>TECHNOLOGY</h2>
           <h2>See what makes us different</h2>
-          <Link to='login' className='main_btn'>Get Started</Link>
+          <Link onClick={handleLoginPage} className='main_btn'>Get Started</Link>
         </div>
         <div className='main_content'>
           <h1>What do we do?</h1>
@@ -32,7 +36,7 @@ function About() {
 
         </div>
         <div className='button'>
-          <Link to="/login" className="main_btn">Schedule Call</Link>
+          <Link onClick={handleLoginPage} className="main_btn">Schedule Call</Link>
         </div>
 
       </div>

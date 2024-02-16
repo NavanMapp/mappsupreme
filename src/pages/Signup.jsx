@@ -71,9 +71,11 @@ export default function Signup() {
         <div className='login-container'>
             <form className='login-form'>
                 <div className='login-heading'>
-                    <Link to='/'>
-                        <img src={logo} alt="MAPP SUPREME" className="logo" />
-                    </Link>
+                    <div className="logo_container">
+                        <a href='/'>
+                            <img src={logo} alt="MAPP SUPREME" className="App-logo" />
+                        </a>
+                    </div>
                     <h1>Create your account</h1>
                 </div>
                 <input type='text'

@@ -22,6 +22,7 @@ export default function Login() {
   const [auth, setAuth] = useState(false)
   const [token, setToken] = useState('')
   const [error, setError] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const navigate = useNavigate()
 
@@ -34,6 +35,7 @@ export default function Login() {
         const user = userCred.user
         localStorage.setItem('token', user.accessToken)
         localStorage.setItem('token', JSON.stringify(user))
+        setIsLoggedIn(true)
         Swal.fire('Success!', 'You have successfully logged In!', 'Success')
         navigate('/ticket')
         setError('')
@@ -47,12 +49,17 @@ export default function Login() {
   const loginWithGoogle = async (e) => {
     e.preventDefault()
 
+    const provider = new GoogleAuthProvider()
     const auth = getAuth()
-    signInWithPopup(auth)
+
+    signInWithPopup(auth, provider)
       .then((result) => {
         const userCred = GoogleAuthProvider.credentialFromResult(result)
         const token = userCred.accessToken
         const user = result.user
+        localStorage.setItem('token', user.accessToken)
+        localStorage.setItem('token', JSON.stringify(user))
+        setIsLoggedIn(true)
         Swal.fire('Success!', 'You have successfully logged In!', 'Success')
         navigate('/ticket')
         setError('')
@@ -66,7 +73,7 @@ export default function Login() {
   }
 
   function handlePasswordReset() {
-      Swal.fire({
+    Swal.fire({
       title: 'Please enter your email!',
       input: 'email',
       inputAttributes: {
@@ -79,7 +86,7 @@ export default function Login() {
         sendPasswordResetEmail(auth, email)
       }
     }).then(() => {
-      Swal.fire('Success','Email link sent, check your email inbox!','Ok')
+      Swal.fire('Success', 'Email link sent, check your email inbox!', 'Ok')
     })
   }
 
@@ -87,9 +94,9 @@ export default function Login() {
     <div className='login-container'>
       <form className='login-form'>
         <div className='login-heading'>
-          <Link to='/'>
-            <img src={logo} alt="MAPP SUPREME" className="logo" />
-          </Link>
+          <a href='/'>
+            <img src={logo} alt="MAPP SUPREME" className="App-logo" />
+          </a>
           <h1>Welcome back</h1>
           <h2>Login !!!😁</h2>
         </div>
