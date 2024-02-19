@@ -1,17 +1,24 @@
 import '../styles/banner.css'
 import logo from '../images/logo.png'
-import { Link } from 'react-router-dom'
-import React, { useEffect, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../auth/auth'
+import Swal from 'sweetalert2'
 
 export default function Banner() {
 
     // const [isLoggedIn, handleLoginPage] = useAuth()
+    const [token, setToken] = useState(localStorage.getItem('token') || '')
+    navigate = useNavigate()
 
     function handleSignout(e) {
         e.preventDefault()
 
-
+        localStorage.removeItem('token')
+        setToken('')
+        Swal.fire('Signing Out!', 'You have successfully logged Out!', 'Continue')
+        navigate('/')
+        console.log('Signing Out!')
     }
 
     const scrolling = useRef < HTMLDivElement > (null)

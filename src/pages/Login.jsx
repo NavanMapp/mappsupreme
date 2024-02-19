@@ -20,7 +20,7 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [auth, setAuth] = useState(false)
-  const [token, setToken] = useState('')
+  const [token, setToken] = useState(localStorage.getItem('token') || '')
   const [error, setError] = useState('')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
