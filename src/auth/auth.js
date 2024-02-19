@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export function useAuth() {
 
@@ -19,4 +19,3 @@ export function useAuth() {
 
     return { isLoggedIn, handleLoginPage }
 }
-

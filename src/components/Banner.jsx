@@ -7,18 +7,22 @@ import Swal from 'sweetalert2'
 
 export default function Banner() {
 
-    // const [isLoggedIn, handleLoginPage] = useAuth()
+    const { isLoggedIn, handleLoginPage } = useAuth()
     const [token, setToken] = useState(localStorage.getItem('token') || '')
-    navigate = useNavigate()
+    const navigate = useNavigate()
 
     function handleSignout(e) {
         e.preventDefault()
 
-        localStorage.removeItem('token')
-        setToken('')
-        Swal.fire('Signing Out!', 'You have successfully logged Out!', 'Continue')
-        navigate('/')
-        console.log('Signing Out!')
+        try {
+            localStorage.removeItem('token')
+            setToken('')
+            Swal.fire('Signing Out!', 'You have successfully logged Out!', 'Continue')
+            navigate('/')
+            console.log('Signing Out!')
+        } catch (error) {
+            Swal.fire('Error', error.message, 'error')
+        }
     }
 
     const scrolling = useRef < HTMLDivElement > (null)
@@ -91,16 +95,19 @@ export default function Banner() {
                 <a href="#services" className="navbar_links">
                     Services
                 </a>
-
-                {/* { isLoggedIn ? (
-                    <Link to="/logout" className="button">Signout</Link>
-                ) : (
-                    <Link onClick={handleLoginPage} className="button">Login</Link>
-                )
-
-                } */}
-
+                {isLoggedIn ?
+                    (
+                        <Link onClick={handleSignout}
+                            to="/logout" className="button">
+                            Signout
+                        </Link>
+                    ) : (
+                        <Link onClick={handleLoginPage}
+                            className="button">
+                            Login
+                        </Link>
+                    )}
             </div>
-        </div>
+        </div >
     )
 }
