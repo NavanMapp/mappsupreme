@@ -10,7 +10,9 @@ import App from './App';
 import Ticket from './pages/Ticket';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Contact from './pages/Contact';
+import Contact from './pages/aboutPage';
+import About from './components/About';
+import Service from './components/Service';
 // import NoPage from './pages/NoPage';
 
 const router = createBrowserRouter([
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
     path: 'contact',
     element: <Contact />
   },
+  {
+    path: 'about',
+    element: <About />
+  },
+  {
+    path: 'services',
+    element: <Service />
+  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

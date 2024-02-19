@@ -7,9 +7,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div>
-      <Banner>
-        <Link to="/login" className="button">Sign In</Link>
-      </Banner>
+      <Banner/>
       <About />
       <Service />
       <Footer />

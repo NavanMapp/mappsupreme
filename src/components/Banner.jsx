@@ -98,12 +98,12 @@ export default function Banner() {
                 {isLoggedIn ?
                     (
                         <Link onClick={handleSignout}
-                            to="/logout" className="button">
+                            className="button1">
                             Signout
                         </Link>
                     ) : (
                         <Link onClick={handleLoginPage}
-                            className="button">
+                            className="button1">
                             Login
                         </Link>
                     )}

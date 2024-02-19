@@ -35,7 +35,7 @@ function About() {
           </p>
 
         </div>
-        <div className='button'>
+        <div className='about_container'>
           <Link onClick={handleLoginPage} className="main_btn">Schedule Call</Link>
         </div>
 
