@@ -12,8 +12,8 @@
     color: #212529;
     transform: none;
     transition: all 0s ease 0s;
-    outline: rgb(255, 0, 0) dashed 1px;
     box-sizing: border-box;
+
 }
 
 .main_container {
@@ -26,6 +26,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    padding-bottom: 25rem;
     /* Center vertically on the page */
 }
 
