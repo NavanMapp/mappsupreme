@@ -2,60 +2,57 @@ import '../styles/banner.css'
 import logo from '../images/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useEffect, useRef, useState } from 'react'
+import Service from './Service'
 import { useAuth } from '../auth/auth'
 
 export default function Banner() {
 
     const { isLoggedIn, handleLoginPage, handleSignout, token } = useAuth()
     const navigate = useNavigate()
+    const scrolling = useRef(null)
+    const homeRef = useRef(null)
+    // const aboutRef = useRef < HTMLDivElement > (null)
+    // const serviceRef = useRef < Service > (null)
 
+    useEffect(() => {
+        homeRef.current?.scrollIntoView()
+    })
 
-    const scrolling = useRef < HTMLDivElement > (null)
+    const scrollToAbout = () => {
+        console.log('scrolling')
+        scrolling.current?.scrollIntoView({
+            behavior: 'smooth',
+        });
+    }
 
-    // useEffect(() => {
-    //     function scrollToAbout() {
-    //         if (scrolling.current) {
-    //             scrolling.current.scrollTo({
-    //                 top: 600,
-    //                 behavior: 'smooth',
-    //             });
-    //         }
-    //     }
+    const scrollToServices = () => {
+        console.log('scrolling')
+        scrolling.current?.scrollIntoView({
+            behavior: 'smooth',
+        });
+    }
 
-    //     function scrollToServie() {
-    //         if (scrolling.current) {
-    //             scrolling.current.scrollTo({
-    //                 top: 960,
-    //                 behavior: 'smooth',
-    //             });
-    //         }
-    //     }
+    const scrollToHome = () => {
+        console.log('scrolling');
+        scrolling.current?.scrollIntoView({
+            behavior: 'smooth',
+        });
+    };
 
-    //     function scrollToHome() {
-    //         if (scrolling.current) {
-    //             scrolling.current.scrollTo({
-    //                 top: 0,
-    //                 behavior: 'smooth',
-    //             });
-    //         }
-    //     }
+    function handleScrolling(e) {
+        e.preventDefault()
 
-    //     scrollToHome()
-    // }, [])
+        const sectionId = e.target.hash.substring(1)
 
-    // function handleScrolling(e) {
-    //     e.preventDefault()
+        if (sectionId === 'home') {
+            // scrollToHome()
+        } else if (sectionId === 'about') {
+            scrollToAbout()
+        } else if (sectionId === 'service') {
+            scrollToServices()
+        }
+    }
 
-    //     const sectionId = e.target.hash.substring(1)
-
-    //     if (sectionId === 'home') {
-    //         scrollToHome()
-    //     } else if (sectionId === 'about') {
-    //         scrollToAbout()
-    //     } else if (sectionId === 'service') {
-    //         scrollToServie()
-    //     }
-    // }
 
     return (
         <div className="navbar">
@@ -71,15 +68,19 @@ export default function Banner() {
                 <span className="bar"></span>
             </div>
             <div className="navbar_menu">
-                <a href="#home" className="navbar_links">
+                <div ref={homeRef}></div>
+                <Link to='/'
+                    onClick={scrollToHome}
+                    className="navbar_links">
                     Home
-                </a>
-                <a href="#about" className="navbar_links">
+                </Link>
+
+                <Link to='/' onClick={scrollToAbout} className="navbar_links">
                     About
-                </a>
-                <a href="#services" className="navbar_links">
+                </Link>
+                <Link to='/' onClick={scrollToServices} className="navbar_links">
                     Services
-                </a>
+                </Link>
                 {isLoggedIn ?
                     (
                         <Link onClick={handleSignout}

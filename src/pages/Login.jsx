@@ -5,6 +5,7 @@ import '../styles/login.css'
 import google from '../images/google-logo.png'
 import '../firebase/config.js'
 import microsoft from '../images/microsoft-logo.png'
+import axios from 'axios'
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -23,27 +24,29 @@ export default function Login() {
   const [token, setToken] = useState(localStorage.getItem('token') || '')
   const [error, setError] = useState('')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
     e.preventDefault()
 
-    const auth = getAuth()
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCred) => {
-        const user = userCred.user
-        localStorage.setItem('token', user.accessToken)
-        localStorage.setItem('token', JSON.stringify(user))
-        setIsLoggedIn(true)
-        Swal.fire('Success!', 'You have successfully logged In!', 'Success')
-        navigate('/ticket')
-        setError('')
-        console.log('logged in')
-      }).catch((error) => {
-        Swal.fire('Error', error.message, 'error')
-        setError(error.message)
-      })
+    try {
+
+      const auth = getAuth()
+      const userCred = await signInWithEmailAndPassword(auth, email, password)
+      const user = userCred.user
+      localStorage.setItem('token', user.accessToken)
+      localStorage.setItem('token', JSON.stringify(user))
+      axios.defaults.headers.common['Authorization'] = `Bearer ${user.accessToken}`
+      setIsLoggedIn(true)
+      Swal.fire('Success!', 'You have successfully logged In!', 'Success')
+      navigate('/ticket')
+      setError('')
+      console.log('logged in')
+
+    } catch (error) {
+      Swal.fire('Error', error.message, 'error')
+      setError(error.message)
+    }
   }
 
   const loginWithGoogle = async (e) => {
@@ -59,6 +62,7 @@ export default function Login() {
         const user = result.user
         localStorage.setItem('token', user.accessToken)
         localStorage.setItem('token', JSON.stringify(user))
+        axios.defaults.headers.common['Authorization'] = `Bearer ${user.accessToken}`
         setIsLoggedIn(true)
         Swal.fire('Success!', 'You have successfully logged In!', 'Success')
         navigate('/ticket')
