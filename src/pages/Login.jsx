@@ -77,21 +77,26 @@ export default function Login() {
   }
 
   function handlePasswordReset() {
-    Swal.fire({
-      title: 'Please enter your email!',
-      input: 'email',
-      inputAttributes: {
-        autocapitalize: 'off'
-      },
-      showCancelButton: true,
-      confirmButtonText: 'Ok',
-      cancelButtonText: 'Cancel',
-      preConfirm: (email) => {
-        sendPasswordResetEmail(auth, email)
-      }
-    }).then(() => {
-      Swal.fire('Success', 'Email link sent, check your email inbox!', 'Ok')
-    })
+
+    try {
+      const auth = getAuth()
+      Swal.fire({
+        title: 'Please enter your email!',
+        input: 'email',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Cancel',
+        preConfirm: (email) => {
+          sendPasswordResetEmail(auth, email)
+          Swal.fire('Success', 'Email link sent, check your email inbox!', 'Ok')
+        }
+      })
+    } catch (error) {
+      Swal.fire('error', error.message)
+    }
   }
 
   return (
@@ -131,12 +136,11 @@ export default function Login() {
             Continue with Google
           </button>
         )}
-        <button className='microsoft-btn'>
-          <img src={microsoft} alt='Google Account' />
+        {/* <button className='microsoft-btn'>
+          <img src={microsoft} alt='Microsoft Account' />
           Continue with Microsoft Account
-        </button>
+        </button> */}
       </form>
     </div>
   )
 }
-

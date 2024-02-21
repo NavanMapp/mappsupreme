@@ -107,10 +107,10 @@ export default function Signup() {
                         Continue with Google
                     </button>
                 )}
-                <button className='microsoft-btn'>
-                    <img src={microsoft} alt='Google Account' />
+                {/* <button className='microsoft-btn'>
+                    <img src={microsoft} alt='Microsoft Account' />
                     Continue with Microsoft Account
-                </button>
+                </button> */}
             </form>
         </div>
     )
