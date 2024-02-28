@@ -26,9 +26,11 @@ function Footer() {
       </div>
       <section className='social_media'>
         <div className='footer_logo'>
-          <a href='#home'>
+          <a href='/'>
             <img src={logo} alt="MAPP SUPREME" className="App-logo" />
           </a>
+        </div>
+        <div className='footer_logo'>
           <p className="website_rights">© MAPP SUPREME 2024. All Rights Reserved</p>
         </div>
       </section>

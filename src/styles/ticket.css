@@ -84,3 +84,18 @@
 .btnLog {
     text-align: right;
 }
+
+@media screen and (max-width: 479.97px) {
+    .main_container {
+        margin: auto;
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 100px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding-bottom: 25rem;
+    }
+}

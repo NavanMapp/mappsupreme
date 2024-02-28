@@ -152,3 +152,12 @@ label {
 .error {
     color: red;
 }
+
+@media screen and (max-width: 479.97px) {
+    .login-container {
+        width: auto;
+        max-width: auto;
+        display: grid;
+        padding-bottom: 100vh;
+    }
+}
